@@ -8,6 +8,7 @@
 - [alertmanager](http://localhost:9093)
 
 ## References
+- [create a incoming webhook to Slack](https://api.slack.com/messaging/webhooks)
 - https://verbosemode.dev/list/monitoring-stack-with-prometheus-grafana-and-docker-3e6e4b94523c
 - https://github.com/ablx/monitoring_stack
 - https://www.theairtips.com/post/setting-up-alertmanager-with-docker-compose
