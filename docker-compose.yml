@@ -27,6 +27,7 @@ services:
     volumes:
       - "./alertmanager:/config"
       - "./alertmanager/slack-url.txt:/etc/alertmanager/slack-url.txt"
+      - "./alertmanager/opsgenie-key.txt:/etc/alertmanager/opsgenie-key.txt"
       - alertmanager-data:/data
     command: --config.file=/config/alertmanager.yml --log.level=debug
 

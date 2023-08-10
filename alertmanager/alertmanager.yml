@@ -1,12 +1,15 @@
 global:
   slack_api_url_file: '/etc/alertmanager/slack-url.txt'
+  opsgenie_api_key_file: '/etc/alertmanager/opsgenie-key.txt'
 
 route:
-  receiver: 'slack-notifications'
+  receiver: 'custom-notifications'
   group_by: [alertname, datacenter, app]
 
 receivers:
-- name: 'slack-notifications'
+- name: 'custom-notifications'
   slack_configs:
   - channel: '#alerts'
     text: 'https://internal.myorg.net/wiki/alerts/{{ .GroupLabels.app }}/{{ .GroupLabels.alertname }}'
+  opsgenie_config:
+  - message: new alert
