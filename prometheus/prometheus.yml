@@ -21,4 +21,4 @@ scrape_configs:
   - job_name: "node-app"
     metrics_path: /metrics
     static_configs:
-      - targets: ["docker.host:8080"]
+      - targets: ["node-app:8080"]
