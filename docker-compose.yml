@@ -4,7 +4,7 @@ services:
   prometheus:
     image: prom/prometheus:v2.37.9
     ports:
-      - 9000:9090
+      - 9090:9090
     volumes:
       - ./prometheus:/etc/prometheus
       - prometheus-data:/prometheus
@@ -32,7 +32,7 @@ services:
 
   node-app:
     image: andreformento/node-app
-    build: ./node-application-monitoring-app
+    build: ./node-app
     ports:
       - 8080:8080
     expose:

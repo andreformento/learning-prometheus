@@ -1,5 +1,5 @@
 {
-  "name": "node-application-monitoring-app",
+  "name": "node-app",
   "version": "1.0.0",
   "description": "Node.js Monitoring with Prometheus and Grafana",
   "main": "index.js",
@@ -14,7 +14,7 @@
     "grafana",
     "metrics"
   ],
-  "author": "Arpendu Kumar Garai",
+  "author": "André Formento",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
