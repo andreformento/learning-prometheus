@@ -12,10 +12,10 @@ groups:
 - name: example
   rules:
   - alert: HighHttpRequestDuration
-    expr: rate(http_request_duration_seconds_sum[5m]) / rate(http_request_duration_seconds_count[5m]) > 1
-    for: 5m
+    expr: rate(http_request_duration_seconds_sum[1m]) / rate(http_request_duration_seconds_count[1m]) > 1
+    for: 1m
     labels:
       severity: critical
     annotations:
       summary: "High HTTP request duration"
-      description: "The average HTTP request duration is above 1 second over the last 5 minutes."
+      description: "The average HTTP request duration is above 1 second over the last 1 minute."
