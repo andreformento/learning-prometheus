@@ -1,6 +1,6 @@
 global:
-  scrape_interval: 30s
-  scrape_timeout: 10s
+  scrape_interval: 5s
+  scrape_timeout: 3s
 
 rule_files:
   - alert.yml
@@ -18,3 +18,7 @@ scrape_configs:
       - targets:
           - 'prometheus:9090'
           - 'idonotexists:564'
+  - job_name: "node-application-monitoring-app"
+    metrics_path: /metrics
+    static_configs:
+      - targets: ["docker.host:8080"]

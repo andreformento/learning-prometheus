@@ -30,6 +30,14 @@ services:
       - alertmanager-data:/data
     command: --config.file=/config/alertmanager.yml --log.level=debug
 
+  node-app:
+    image: andreformento/node-app
+    build: ./node-application-monitoring-app
+    ports:
+      - 8080:8080
+    expose:
+      - 8080
+
 volumes:
   prometheus-data:
   grafana-data:
