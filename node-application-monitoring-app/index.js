@@ -60,8 +60,8 @@ const createFastDelayHandler = async (req, res) => {
     throw new Error('Internal Error')
   }
 
-  // delay for 300-600 ms
-  const delaySeconds = Math.floor(Math.random() * (6 - 3)) + 3
+  // delay for 200-800 ms
+  const delaySeconds = Math.floor(Math.random() * (8 - 2)) + 2
   await new Promise(res => setTimeout(res, delaySeconds * 100))
 
   res.end('Fast url accessed !!');
