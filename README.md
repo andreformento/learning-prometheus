@@ -1,8 +1,8 @@
 # learning-prometheus
 
 ## Comands
-- start prometheus `docker-compose up -d --build` 
-- reload configs `curl -X POST http://localhost:9090/-/reload`
+- start prometheus `make up` 
+- reload configs `make reload`
 - [prometheus](http://localhost:9090/graph?g0.expr=up&g0.tab=1&g0.stacked=0&g0.show_exemplars=0&g0.range_input=1h)
 - [grafana](http://localhost:3000) _(admin/admin)_
 - [alertmanager](http://localhost:9093)
@@ -11,7 +11,7 @@
   - [fast](http://localhost:8080/fast)
   - [slow](http://localhost:8080/slow)
 - custom tickets
-  - call endopint `curl -X POST http://localhost:8081/data -H 'Content-Type: application/json' -d '{"a": 1}'`
+  - call endopint `make call-endpoint`
 
 ## References
 - [create a incoming webhook to Slack](https://api.slack.com/messaging/webhooks)
