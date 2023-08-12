@@ -4,7 +4,7 @@ services:
   prometheus:
     image: prom/prometheus:v2.37.9
     ports:
-      - 9000:9090
+      - 9090:9090
     volumes:
       - ./prometheus:/etc/prometheus
       - prometheus-data:/prometheus
@@ -17,6 +17,8 @@ services:
     restart: unless-stopped
     volumes:
       - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+      - ./grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
       - grafana-data:/var/lib/grafana
 
   alertmanager:
@@ -29,6 +31,14 @@ services:
       - "./alertmanager/slack-url.txt:/etc/alertmanager/slack-url.txt"
       - alertmanager-data:/data
     command: --config.file=/config/alertmanager.yml --log.level=debug
+
+  node-app:
+    image: andreformento/node-app
+    build: ./node-app
+    ports:
+      - 8080:8080
+    expose:
+      - 8080
 
 volumes:
   prometheus-data:

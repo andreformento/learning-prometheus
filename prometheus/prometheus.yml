@@ -1,6 +1,7 @@
 global:
-  scrape_interval: 30s
-  scrape_timeout: 10s
+  scrape_interval: 5s
+  scrape_timeout: 3s
+  evaluation_interval: 10s
 
 rule_files:
   - alert.yml
@@ -18,3 +19,4 @@ scrape_configs:
       - targets:
           - 'prometheus:9090'
           - 'idonotexists:564'
+          - 'node-app:8080'
