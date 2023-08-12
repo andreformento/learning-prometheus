@@ -20,3 +20,4 @@ scrape_configs:
           - 'prometheus:9090'
           - 'idonotexists:564'
           - 'node-app:8080'
+          - 'custom-ticket:8081'
