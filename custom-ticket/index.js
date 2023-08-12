@@ -8,6 +8,9 @@ const { counter } = require('./counter');
 
 // Create a Registry to register the metrics
 const register = new client.Registry();
+const PORT = 8081;
+
+app.use(express.json());
 
 // Add a default metrics and enable the collection of it
 client.collectDefaultMetrics({
@@ -44,29 +47,6 @@ summary(register);
 counter(register);
 
 // Handlers
-const createSlowDelayHandler = async (req, res) => {
-  if ((Math.floor(Math.random() * 100)) === 0) {
-    throw new Error('Internal Error')
-  }
-
-  // delay for 3-6 seconds
-  const delaySeconds = Math.floor(Math.random() * (6 - 3)) + 3
-  await new Promise(res => setTimeout(res, delaySeconds * 1000))
-
-  res.end('Slow url accessed !!');
-};
-const createFastDelayHandler = async (req, res) => {
-  if ((Math.floor(Math.random() * 100)) === 0) {
-    throw new Error('Internal Error')
-  }
-
-  // delay for 200-800 ms
-  const delaySeconds = Math.floor(Math.random() * (8 - 2)) + 2
-  await new Promise(res => setTimeout(res, delaySeconds * 100))
-
-  res.end('Fast url accessed !!');
-};
-
 app.get('/metrics', async (req, res) => {
   // Start the timer
   const end = httpRequestDurationMicroseconds.startTimer();
@@ -79,29 +59,19 @@ app.get('/metrics', async (req, res) => {
   end({ route, code: res.statusCode, method: req.method });
 });
 
-app.get('/slow', async (req, res) => {
+app.post('/data', (req, res) => {
   // Start the timer
   const end = httpRequestDurationMicroseconds.startTimer();
-  const route = req.route.path;
+  
+  console.log(req.body);  // This will print the JSON body to the console
 
-  await createSlowDelayHandler(req, res);
-
-  // End timer and add labels
-  end({ route, code: res.statusCode, method: req.method });
-});
-
-app.get('/fast', async (req, res) => {
-  // Start the timer
-  const end = httpRequestDurationMicroseconds.startTimer();
-  const route = req.route.path;
-
-  await createFastDelayHandler(req, res);
+  res.status(200).send('Data received!');
 
   // End timer and add labels
-  end({ route, code: res.statusCode, method: req.method });
+  end({ route: req.route.path, code: res.statusCode, method: req.method });
 });
 
 // Start the Express server and listen to a port
-app.listen(8081, () => {
-  console.log('Server is running on http://localhost:8081')
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`)
 });

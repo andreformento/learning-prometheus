@@ -10,6 +10,8 @@
   - [metrics](http://localhost:8080/metrics)
   - [fast](http://localhost:8080/fast)
   - [slow](http://localhost:8080/slow)
+- custom tickets
+  - call endopint `curl -X POST http://localhost:8081/data -H 'Content-Type: application/json' -d '{"a": 1}'`
 
 ## References
 - [create a incoming webhook to Slack](https://api.slack.com/messaging/webhooks)
