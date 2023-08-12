@@ -13,7 +13,7 @@ groups:
   rules:
   - alert: HighHttpRequestDuration
     expr: rate(http_request_duration_seconds_sum[5m]) / rate(http_request_duration_seconds_count[5m]) > 1
-    for: 5m
+    for: 15s
     labels:
       severity: critical
     annotations:

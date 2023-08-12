@@ -4,6 +4,7 @@ global:
 route:
   receiver: 'slack-notifications'
   group_by: [alertname, datacenter, app]
+  group_wait: 10s
 
 receivers:
 - name: 'slack-notifications'
