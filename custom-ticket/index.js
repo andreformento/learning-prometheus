@@ -65,7 +65,7 @@ app.post('/data', (req, res) => {
   
   console.log(req.body);  // This will print the JSON body to the console
 
-  res.status(200).send('Data received!');
+  res.status(200).json({ message: 'Data received successfully!' });
 
   // End timer and add labels
   end({ route: req.route.path, code: res.statusCode, method: req.method });
