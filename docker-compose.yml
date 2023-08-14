@@ -30,7 +30,7 @@ services:
       - "./alertmanager:/config"
       - "./alertmanager/slack-url.txt:/etc/alertmanager/slack-url.txt"
       - alertmanager-data:/data
-    command: --config.file=/config/alertmanager.yml --log.level=debug
+    command: --config.file=/config/alertmanager.yml --log.level=info
 
   node-app:
     image: andreformento/node-app

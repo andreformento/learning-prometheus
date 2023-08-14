@@ -11,6 +11,8 @@ route:
   routes:
   - receiver: 'external-notifications'
     continue: true
+  - receiver: 'default-notifications'
+    continue: true
 
 receivers:
 - name: 'default-notifications'
