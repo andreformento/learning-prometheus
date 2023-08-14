@@ -14,4 +14,4 @@ receivers:
   slack_configs:
   - channel: '#alerts'
     send_resolved: true
-    text: 'https://internal.myorg.net/wiki/alerts/{{ .GroupLabels.app }}/{{ .GroupLabels.alertname }}'
+    text: 'https://internal.myorg.net/wiki/alerts/{{ .GroupLabels.app }}/{{ .GroupLabels.alertname }} Description: {{ .CommonAnnotations.description }} Summary: {{ .CommonAnnotations.summary }}'

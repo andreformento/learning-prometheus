@@ -15,6 +15,7 @@
 
 ## References
 - [create a incoming webhook to Slack](https://api.slack.com/messaging/webhooks)
+- [notification examples](https://prometheus.io/docs/alerting/latest/notification_examples)
 - https://verbosemode.dev/list/monitoring-stack-with-prometheus-grafana-and-docker-3e6e4b94523c
 - https://github.com/ablx/monitoring_stack
 - https://www.theairtips.com/post/setting-up-alertmanager-with-docker-compose
