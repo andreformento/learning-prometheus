@@ -1,7 +1,7 @@
 # learning-prometheus
 
 ## Comands
-- start prometheus `make up` 
+- start prometheus `make start` 
 - reload configs `make reload`
 - [prometheus](http://localhost:9090/graph?g0.expr=up&g0.tab=1&g0.stacked=0&g0.show_exemplars=0&g0.range_input=1h)
 - [grafana](http://localhost:3000) _(admin/admin)_
@@ -12,6 +12,10 @@
   - [slow](http://localhost:8080/slow)
 - custom tickets
   - call endopint `make call-endpoint`
+- show logs:
+  - `make logs service=custom-ticket`
+  - `make logs service=node-app`
+  - `make logs service=alertmanager`
 
 ## References
 - [create a incoming webhook to Slack](https://api.slack.com/messaging/webhooks)
