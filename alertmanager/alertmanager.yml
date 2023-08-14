@@ -3,15 +3,24 @@ global:
   resolve_timeout: 10s
 
 route:
-  receiver: 'slack-notifications'
+  receiver: 'default-notifications'
   group_by: [alertname, datacenter, app]
   group_wait: 10s
   group_interval: 10s
   repeat_interval: 15s
+  routes:
+  - receiver: 'external-notifications'
+    continue: true
+  - receiver: 'default-notifications'
+    continue: true
 
 receivers:
-- name: 'slack-notifications'
+- name: 'default-notifications'
   slack_configs:
   - channel: '#alerts'
     send_resolved: true
-    text: 'https://internal.myorg.net/wiki/alerts/{{ .GroupLabels.app }}/{{ .GroupLabels.alertname }}'
+    text: 'https://internal.myorg.net/wiki/alerts/{{ .GroupLabels.app }}/{{ .GroupLabels.alertname }} Description: {{ .CommonAnnotations.description }} Summary: {{ .CommonAnnotations.summary }}'
+- name: 'external-notifications'
+  webhook_configs:
+  - url: 'http://custom-ticket:8081/data'
+    send_resolved: true
