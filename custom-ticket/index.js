@@ -63,7 +63,7 @@ app.post('/data', (req, res) => {
   // Start the timer
   const end = httpRequestDurationMicroseconds.startTimer();
   
-  console.log(req.body);  // This will print the JSON body to the console
+  console.log(JSON.stringify(req.body));  // This will print the JSON body to the console
 
   res.status(200).json({ message: 'Data received successfully!' });
 
